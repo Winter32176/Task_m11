@@ -1,0 +1,4 @@
+1,alice@example.com,25
+2,bob.example.com,17
+3,,30
+4,charlie@example.com,notANumber
