@@ -13,6 +13,7 @@ public class Main {
 
     static void main(String[] args) {
         List<FileData> data = new ArrayList<>();
+        List<User> users = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
@@ -27,7 +28,7 @@ public class Main {
                 }
                 if (input.equalsIgnoreCase("output")) {
                     if (!data.isEmpty()) {
-                        for (var d : data) {
+                        for (var d : users) {
                             System.out.println("ID: " + d.getId() + ", Email: " + d.getEmail() + ", Age: " + d.getAge());
                         }
                     }
@@ -59,8 +60,11 @@ public class Main {
                                 log.info(e.getMessage());
                             }
                         }
-                        data.addAll(StringWorker.getDataFromFileList());
 
+                        data.addAll(StringWorker.getDataFromFileList());
+                        for (var d : data) {
+                            users.add(new User(d.getId(), d.getEmail(), d.getAge()));
+                        }
                         System.out.println("File processed successfully: " + file.getPath());
                     } catch (FileNotFoundException e) {
                         log.info(e.getMessage());
